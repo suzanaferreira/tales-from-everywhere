@@ -1,0 +1,124 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+  <!-- Continent Collection Section -->
+
+  <div class="page-section collection">
+    <!-- Section Heading -->
+    <h2 class="page-section-heading text-center text-uppercase">
+      Choose the Continent
+    </h2>
+
+    <!--Continents-->
+    
+    <div class="row">
+      <!-- continent 1 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('asia') }}"
+            >Asia<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/asiapic.jpg') }}"
+              alt="asia"
+          /></a>
+        </div>
+      </div>
+
+      <!-- continent 2 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('africa') }}"
+            >Africa<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/africapic.jpg') }}"
+              alt="africa"
+          /></a>
+        </div>
+      </div>
+
+      <!-- continent 3 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('antarctica') }}"
+            >Antarctica<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/antarcticapic.jpg') }}"
+              alt="antarctica"
+          /></a>
+        </div>
+      </div>
+
+      <!-- continent 4 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('australia') }}"
+            >Australia<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/australiapic.jpg') }}"
+              alt="Australia"
+          /></a>
+        </div>
+      </div>
+
+      <!-- continent 5 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('europe') }}"
+            >Europe<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/europepic.jpg') }}"
+              alt="europe"
+          /></a>
+        </div>
+      </div>
+
+      <!-- continent 6 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('northamerica') }}"
+            >North America<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/northamericapic.jpg') }}"
+              alt="northamerica"
+          /></a>
+        </div>
+      </div>
+      
+      <!-- continent 7 -->
+      <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="continent-item mx-auto">
+          <div
+            class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('northamerica') }}"
+            >South America<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/southamericapic.jpg') }}"
+              alt="southamerica"
+          /></a>
+        </div>
+      
+    </div>
+    <!-- /.row -->
+  </div>
+
+  {% endblock %}
+</div>

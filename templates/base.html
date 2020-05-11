@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Tales From Everywhere</title>
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+        />
+        <link
+          href="{{ url_for('static', filename='css/style.css') }}"
+          rel="stylesheet"
+          type="text/css"
+        />
+        <link
+          href="{{ url_for('static', filename='img/headerpic.jpg') }}"
+          rel="shortcut icon"
+          type="image/png"
+        />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+      </head>
+
+      <body>
+        <!--Navbar-->
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">byEveryone</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="addtale.html">Add Tale</a></li>
+              <li><a href="badges.html">Login</a></li>
+              <li>
+                <a href="collapsible.html">
+                  <a class="waves-effect waves-light btn-small">Sign Up</a></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!--Header-->
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/headerpic.jpg') }}')">
+    
+    <div class="container d-flex align-items-center flex-column text-white text-center">
+
+      <!-- Masthead Heading -->
+      <h1 class="masthead-heading text-uppercase mb-0">Tales From Everywhere by Everyone</h1>
+
+      
+
+      <!-- Masthead Subheading -->
+      <p class="masthead-subheading">Here you can be a storyteller</p>
+      <div class="container d-flex align-items-center justify-content-center">
+        <div class="row">
+          {% if 'username' in session %}
+          <span class="session-user">Welcome : {{ session['username'].title() }}!</span> {% else%} {% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+        {% block content %} {% endblock %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      </body>
+    </html>
+  </head>
+</html>
