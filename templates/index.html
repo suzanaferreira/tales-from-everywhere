@@ -5,30 +5,25 @@
 
   <div class="page-section collection">
     <!-- Section Heading -->
-    <h2 class="page-section-heading text-center text-uppercase">
+    <h5 class="page-section-heading text-center text-uppercase">
       Choose the Continent
-    </h2>
+    </h5>
 
     <!--Continents-->
 
-    <div class="row">
+    <div class="row" id="cont-rows">
       <!-- continent 1 -->
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-3 col-xl-3">
         <div class="continent-item mx-auto">
           <div
             class="d-flex align-items-center justify-content-center h-100 w-100"
           ></div>
-          <a href="{{ url_for('asia') }}"
-            >Asia<img
-              class="img-fluid"
-              src="{{ url_for('static', filename='img/asiapic.jpg') }}"
-              alt="asia"
-          /></a>
+          <a href="{{ url_for('asia') }}">Asia<img class="img-fluid" src="{{ url_for('static', filename='img/asiapic.jpg') }}"alt="asia"/></a>
         </div>
       </div>
 
       <!-- continent 2 -->
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-3 col-xl-3">
         <div class="continent-item mx-auto">
           <div
             class="d-flex align-items-center justify-content-center h-100 w-100"
@@ -43,7 +38,7 @@
       </div>
 
       <!-- continent 3 -->
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-3 col-xl-3">
         <div class="continent-item mx-auto">
           <div
             class="d-flex align-items-center justify-content-center h-100 w-100"
@@ -58,7 +53,7 @@
       </div>
 
       <!-- continent 4 -->
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-3 col-xl-3">
         <div class="continent-item mx-auto">
           <div
             class="d-flex align-items-center justify-content-center h-100 w-100"
@@ -73,7 +68,7 @@
       </div>
 
       <!-- continent 5 -->
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-3 col-xl-3">
         <div class="continent-item mx-auto">
           <div
             class="d-flex align-items-center justify-content-center h-100 w-100"
@@ -88,7 +83,7 @@
       </div>
 
       <!-- continent 6 -->
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-3 col-xl-3">
         <div class="continent-item mx-auto">
           <div
             class="d-flex align-items-center justify-content-center h-100 w-100"
@@ -100,14 +95,15 @@
               alt="northamerica"
           /></a>
         </div>
+     </div>
 
         <!-- continent 7 -->
-        <div class="col-md-6 col-lg-4 col-xl-4">
+        <div class="col-md-6 col-lg-3 col-xl-3">
           <div class="continent-item mx-auto">
             <div
               class="d-flex align-items-center justify-content-center h-100 w-100"
             ></div>
-            <a href="{{ url_for('northamerica') }}"
+            <a href="{{ url_for('southamerica') }}"
               >South America<img
                 class="img-fluid"
                 src="{{ url_for('static', filename='img/southamericapic.jpg') }}"
@@ -115,7 +111,25 @@
             /></a>
           </div>
         </div>
-        <!-- /.row -->
+
+         <!--add own tale-->
+        <div class="col-md-6 col-lg-3 col-xl-3">
+           <div class="continent-item mx-auto">
+            <div class="d-flex align-items-center justify-content-center h-100 w-100"
+          ></div>
+          <a href="{{ url_for('add_tale') }}"
+            >Add your tale<img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/addtale.jpg') }}"
+              alt="addtale"
+          /></a>
+          
+        </div>
+    </div>
+
+
+          
+      
       </div>
 
      

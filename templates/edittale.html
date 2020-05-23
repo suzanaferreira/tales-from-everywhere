@@ -1,15 +1,18 @@
 {% extends 'base.html' %} {% block content %}
- 
 
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-           <h2>{{page_title}}</h2>
-           <p>You have a blank page just for you!</p>
-            <p>Fill out the form below to add your tale to the database.</p>
-                <form action="{{url_for('insert_tales')}}" method="POST">
+        <div class="edit-details col-12">
+            <br>
+                     <!--Tale Name-->        
+                <div class="col-12">
+                    <h3>{{tales.tale_name}}</h3>
+                    <p class="form-edit">Fill out the form below to edit a tale from the database.</p>
+                <form action="{{ url_for('edit_tale', tale_name=tales._id) }}" method="POST">
                         <br>
-            <!--Name-->
-                     <div class="row">
+                     </div>   
+                        <!--Name-->
+                         <div class="row">
                           <div class="col-sm-12 col-md-6">
                             <div class="input-field ">
                                 <i class="fas fa-book-open"> Tale Name:</i>
@@ -21,7 +24,7 @@
                         
                         <!--Continent-->
                         
-                     <div class="row">
+                           <div class="row">
                         <div class="col-12">
                           <div class="row">
                              <div class="input-field col-6">
@@ -30,54 +33,64 @@
                              </div>
                              <br>
                             <div class="input-field col-6 ">
-                             <i class="fas fa-map-marker-alt"> Country: </i>
-                                <textarea name="label" id="label" class="materialize-textarea">{{ tales.country_name }}</textarea>
+                                <i class="fas fa-map-marker-alt"> Country: </i>
+                                <textarea name="country_name" id="country_name" class="materialize-textarea">{{ tales.country_name }}</textarea>
                             </div>
                           </div>
-                     
+                        </div>
+                     </div>
                         <br>
                         <!--Author-->
-                    <div class="row">
+                     <div class="row">
                         <div class="col-12">
                         <div class="row">
                          <div class="input-field col-6">
                                 <i class="fas fa-user"> Author: </i>
-                                <textarea name="author_field) id="author" class="materialize-textarea">{{ tales.author }}</textarea>
+                                <textarea name="author" id="author" class="materialize-textarea">{{ tales.author }}</textarea>
                          </div>
                             <div class="input-field col-6">
                             <i class="far fa-image"> Picture:</i>
-                            <textarea name="image" id="image" class="materialize-textarea">{{ tales.url_img }}</textarea>
+                            <textarea name="url_img" id="url_img" class="materialize-textarea">{{ tales.url_img }}</textarea>
                             </div>
 
                             </div>
                         </div>
-                    </div>
-                    </div>
-                    </div>
-                    <br>
+                     </div>
+                     </div>
+                     </div>
+                     <br>
                         
                         <!--Descr-->
                         
                         <div class="row">
                         <div class="col-12">
-                            <div class="input-field">
+                            <div class="input-field" id="input-field">
                                 <i class="fas fa-edit"> Description:</i>
-                                <textarea name="recipe_description" id="tale_description" class="materialize-textarea">{{tales.tale_desc}}</textarea>
+                                <textarea name="tale_desc" id="tale_desc" class="materialize-textarea">{{tales.tale_desc}}</textarea>
                             </div>
                         </div>
                         </div>
                         <br>
-                        
-                         <div class="row">
-                            <div class="input-field col s12">
-                                <button class="btn waves-effect waves-light btn-large green" type="submit" name="action" id="subTaleButton">Submit</button>
+                        <br>
+                       <div class="row">
+                            <div class="input-field col-6">
+                                <!--Go Back-->
+                                <a href="{{ url_for('edit_tale', tale_name=tales._id)}}"><button class="btn waves-effect waves-light btn-large" type="button" name="url" id="goBack"><b>Go back</b></button></a>
+                                 <!--Submit-->
+                                <button class="btn waves-effect waves-light btn-large green" type="submit" name="action" id="editTaleButton">Submit</button>
                             </div>
                         </div>
-                       </form>
-                   </div>
+
+                    </form>
                 </div>
+
+                <div class="col-xm-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                </div>
+
             </div>
         </div>
     </div>
-</div>    
+</div>
+
 {% endblock %}
+

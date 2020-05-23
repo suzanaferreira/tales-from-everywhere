@@ -14,5 +14,6 @@
       "**/.DS_Store": true,
       "**/.theia": true,
 },
-"editor.autoSave": "on"
+"editor.autoSave": "on",
+"python.formatting.provider": "black"
 }

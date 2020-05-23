@@ -1,0 +1,180 @@
+body {
+    display:block;
+    color:#154A4E;
+}
+
+
+html,
+body,
+header,
+{
+height: 100vh;
+
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+   
+}
+
+/*--home--*/
+.home-text {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header-img {
+    padding-top: calc(6rem + 74px);
+    padding-bottom: 6rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display:block;
+    height: auto;
+   }
+
+.nav-wrapper {
+    background-color: #154A4E;
+}
+
+#cont-rows {
+   display: flex;
+}
+
+.column {
+  flex: 25%;
+  padding: 15px;
+}
+/*---continent pictures---*/
+.continent-item {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    text-align: center;
+    color: white;
+    max-width: 20rem;
+    margin-bottom: 1.875rem;
+    overflow: hidden;
+    
+}
+
+.img-fluid {
+    position:relative;
+    height: 25vh;
+    min-width: 100%;
+    object-fit: cover;
+}
+
+.continent-item a{
+    font-size: 24px;
+    color: #154A4E;
+    letter-spacing: 3px;
+}
+
+.page-section-heading{
+    font-size: 36px;
+    padding:30px;
+    font-weight: bold;
+    color: #154A4E;
+    letter-spacing: 5px;
+} 
+
+/*Page that display each continent gallery*/
+
+.tales-display {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:30px;
+}
+h3 {
+    text-align: center;
+    margin:40px;
+    color:#154A4E;
+    letter-spacing: 5px;
+}
+.tale-img {
+    position:relative;
+    height: 25vh;
+    min-width: 100%;
+    object-fit: cover;
+    border: 1px solid #154A4E;
+}
+
+.tale-cover {
+    position:relative;
+    margin-left:auto;
+    margin-right: auto;
+    display:block;
+    text-align: center;
+    margin:20px;
+    color:#154A4E;
+    letter-spacing: 2px;
+}
+
+/*Page that display one tale at a time*/
+
+.tale-image-container {
+    margin-top:40px;
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+}
+
+.tale-desc {
+    text-align:justify;
+    color:#154A4E;
+}
+
+p.tale-desc::first-letter {
+   font-size:200%;
+   -webkit-initial-letter: 2;
+}
+
+.tale-title{
+    color:#154A4E;
+    letter-spacing: 5px;
+}
+.detail-tale{
+    text-align:left;
+    color:#154A4E;
+    letter-spacing: 2px;
+    letter-spacing: 1px;
+}
+
+#delete-button {
+    background-color: #e53935 ;
+
+}
+
+.buttons {
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    position:relative;
+}
+
+/*Edit page */
+
+.edit-details {
+    color: #154A4E;
+    letter-spacing: 2px;
+}
+
+#tale_desc {
+    color:#154A4E;
+    text-align:justify;
+}
+
+.fa-edit {
+    letter-spacing: 2px;
+}
+
+.form-edit {
+    text-align: center;
+}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3> {{ page_title }} </h3>
+<div class="container-fluid">
+   <div class ="row">
+     {% for tales in tales %}
+     <div class="col-sm-12 col-md-4 col-lg-4">
+         <div class="tales-display d-flex align-items-center justify-content-center" style="width:200px">
+                <img class="tale-img" src="{{ tales.img_url }}" alt="Tale Img">
+         </div>
+                <div class="tale-cover">
+                    <h6 class="tale-name">{{ tales.tale_name }}</h6>
+                    <a href="{{ url_for('tale', tale_name=tales._id) }}" class="waves-effect waves-light btn-small">Read</a>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
