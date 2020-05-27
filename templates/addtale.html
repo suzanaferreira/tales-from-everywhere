@@ -24,10 +24,15 @@
                      <div class="row">
                         <div class="col-12">
                           <div class="row">
-                             <div class="input-field col-6">
-                                <i class="fas fa-globe"> Continent: </i>
-                                <textarea name="continent_name" id="continent_name" class="materialize-textarea">{{ tales.continent_name }}</textarea>
-                             </div>
+                            <div class="input-field col-6">
+									<select id="continents" name="continent_name">
+																									      <option value="" disabled selected>Choose your continent:</option>
+																									      {% for cont in continents %}
+																									        <option value="{{cont.continent_name}}">{{cont.continent_name}}</option>
+												                                                          {% endfor %}
+																									    </select>
+									<label>Continent:</label>
+								</div>
                              <br>
                             <div class="input-field col-6 ">
                              <i class="fas fa-map-marker-alt"> Country: </i>

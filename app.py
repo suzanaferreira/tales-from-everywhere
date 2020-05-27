@@ -96,15 +96,10 @@ def southamerica():
                                tales=mongo.db.tales.find
                                ({"continent_name": "South America"}))
 
-@app.route('/add_tale', methods=["GET", "POST"])
-def add_tale():
-    if request.method == "POST":
-        flash("Thanks, You have added a tale to our collection".format(
-        ))
-    return render_template("addtale.html", page_title="Your Space",  tales=mongo.db.tales.find())
-    
-#display one tale
 
+
+
+#display one tale
 @app.route('/get_tale/<tale_name>', methods=['GET', 'POST'])
 def tale(tale_name):
     tales_collection = mongo.db.tales.find().count()
@@ -113,15 +108,13 @@ def tale(tale_name):
                                tales=one_tale, title=one_tale['tale_name'])
 
 
-
-# Display Edit tale Page 
-@app.route('/edit_tales/<tale_name>', methods=["GET", "POST"])
-def edit_tales(tale_name):
-    tales_collection = mongo.db.tales.find_one({"_id": ObjectId(tale_name)})
-    continents =  mongo.db.continents.find()
-    return render_template("edittale.html", page_title="Edit", tales=tales_collection, 
-                            continents=continents) 
-
+@app.route('/add_tale', methods=["GET", "POST"])
+def add_tale():
+    _continents=mongo.db.continents.find()
+    tales_collection = mongo.db.tales.find()
+    continent_list=[continent for continent in _continents]
+    return render_template("addtale.html", page_title="Your Space",  _continents=continent_list, tales=tales_collection)
+    
 
 #add tale to database
 @app.route('/insert_tales', methods=['POST'])
@@ -136,7 +129,16 @@ def insert_tales():
             }
     mongo.db.tales.insert_one(insert_tales)
     print("Tale added!")
-    return redirect(url_for('index'))
+    return redirect(url_for('tales'))
+
+# Display Edit tale Page 
+@app.route('/edit_tales/<tale_name>', methods=["GET", "POST"])
+def edit_tales(tale_name):
+    tales_collection = mongo.db.tales.find_one({"_id": ObjectId(tale_name)})
+    continents =  mongo.db.continents.find()
+    return render_template("edittale.html", page_title="Edit", tales=tales_collection, 
+                            continents=continents) 
+
 
 #edit tale from database
 @app.route('/edit_tale/<tale_name>', methods=['GET', 'POST'])
@@ -156,16 +158,25 @@ def edit_tale(tale_name):
                    }})
     return redirect(url_for('tale', tale_name=tale_name))
 
+
+#Display Delete Page
+@app.route('/delete_tales/<tale_name>', methods=["GET", "POST"])
+def delete_tales(tale_name):
+    tales_collection = mongo.db.tales.find_one({"_id": ObjectId(tale_name)})
+    continents =  mongo.db.continents.find()
+    return render_template("deletetale.html",  page_title="Delete", tales=tales_collection, continents=continents)
+
+
 #delete tale from database
 @app.route('/delete_tale<tale_name>', methods=['GET','POST'])
 def delete_tale(tale_name):
     if request.method== "POST":
         tales = mongo.db.tales
         tales.delete_one({'_id': ObjectId(tale_name)})
-        return redirect(url_for('index'))
+        return redirect(url_for('tale', tale_name=tale_name))
 
-     
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-    port=int(os.environ.get('PORT')),
-    debug=True)
+        port=int(os.environ.get('PORT')),
+        debug=True)
