@@ -8,7 +8,7 @@
 			<div class="col-12">
 				<h3>{{tales.tale_name}}</h3>
 				<p class="form-edit">Fill out the form below to edit a tale from the database.</p>
-				<form action="{{ url_for('edit_tale', tale_name=tales._id) }}" method="POST">
+				<form name ="edit_tales" method="POST" action="{{ url_for('update_tale', tale_name=tales._id) }}">
 					<br>
                      </div>
 					<!--Name-->
@@ -28,10 +28,10 @@
 						<div class="col-12">
 							<div class="row">
 								<div class="input-field col-6">
-									<select id="continents" name="continent_name">
-																									      <option value="" disabled selected>Choose your continent:</option>
-																									      {% for cont in continents %}
-																									        <option value="{{cont.continent_name}}">{{cont.continent_name}}</option>
+									<select id="continent_name" name="continent_name">
+																									      <option value="" disabled selected> Choose your continent:</option>
+																									      {% for tales in continents %}
+																									        <option value="{{tales.continent_name}}">{{tales.continent_name}}</option>
 												                                                              {% endfor %}
 																									    </select>
 									<label>Continent:</label>
@@ -56,7 +56,7 @@
 								</div>
 								<div class="input-field col-6">
 									<i class="far fa-image"> URL img:</i>
-									<textarea name="url_img" id="url_img" class="materialize-textarea">{{ tales.url_img }}</textarea>
+									<textarea name="img_url" id="img_url" class="materialize-textarea">{{ tales.img_url }}</textarea>
 								</div>
 
 							</div>
@@ -71,8 +71,8 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="input-field" id="input-field">
-					<i class="fas fa-edit"> Description:</i>
-					<textarea name="tale_desc" id="tale_desc" class="materialize-textarea">{{tales.tale_desc}}</textarea>
+					<i class="fas fa-edit"> Story:</i>
+					<textarea name="tale_desc" id="tale_desc" class="materialize-textarea">{{ tales.tale_desc }}</textarea>
 				</div>
 			</div>
 		</div>
@@ -82,7 +82,7 @@
 			<div class="input-field col-6">
 				<!--Go Back-->
 				<a
-					href="{{ url_for('edit_tale', tale_name=tales._id)}}"><button class="btn waves-effect waves-light btn-large" type="button" name="url" id="goBack"><b>Go back</b></button></a>
+					href="{{ url_for('index') }}"><button class="btn waves-effect waves-light btn-large" type="button" name="action" id="goBack"><b>Go back</b></button></a>
 				<!--Submit-->
 				<button class="btn waves-effect waves-light btn-large green" type="submit" name="action" id="editTaleButton">Submit</button>
 			</div>

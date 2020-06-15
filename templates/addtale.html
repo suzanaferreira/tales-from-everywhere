@@ -25,18 +25,18 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="input-field col-6">
-									<select id="continents" name="continent_name">
-																									      <option value="" disabled selected>Choose your continent:</option>
-																									      {% for cont in continents %}
-																									        <option value="{{cont.continent_name}}">{{cont.continent_name}}</option>
-												                                                          {% endfor %}
+									<select id="continent_name" name="continent_name">
+																									      <option value="" disabled selected> Choose your continent:</option>
+																									      {% for tales in continents %}
+																									        <option value="{{tales.continent_name}}">{{tales.continent_name}}</option>
+												                                                              {% endfor %}
 																									    </select>
 									<label>Continent:</label>
 								</div>
                              <br>
                             <div class="input-field col-6 ">
                              <i class="fas fa-map-marker-alt"> Country: </i>
-                                <textarea name="label" id="label" class="materialize-textarea">{{ tales.country_name }}</textarea>
+                                <textarea name="country_name" id="country_name" class="materialize-textarea">{{ tales.country_name }}</textarea>
                             </div>
                           </div>
                      
@@ -47,11 +47,11 @@
                         <div class="row">
                          <div class="input-field col-6">
                                 <i class="fas fa-user"> Author: </i>
-                                <textarea name="author_field) id="author" class="materialize-textarea">{{ tales.author }}</textarea>
+                                <textarea name="author" id="author" class="materialize-textarea">{{ tales.author }}</textarea>
                          </div>
                             <div class="input-field col-6">
                             <i class="far fa-image"> Picture:</i>
-                            <textarea name="image" id="image" class="materialize-textarea">{{ tales.url_img }}</textarea>
+                            <textarea name="img_url" id="img_url" class="materialize-textarea">{{ tales.img_url }}</textarea>
                             </div>
 
                             </div>
@@ -66,8 +66,8 @@
                         <div class="row">
                         <div class="col-12">
                             <div class="input-field">
-                                <i class="fas fa-edit"> Description:</i>
-                                <textarea name="recipe_description" id="tale_description" class="materialize-textarea">{{tales.tale_desc}}</textarea>
+                                <i class="fas fa-edit"> Story:</i>
+                                <textarea name="tale_desc" id="tale_desc" class="materialize-textarea">{{tales.tale_desc}}</textarea>
                             </div>
                         </div>
                         </div>

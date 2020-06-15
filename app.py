@@ -14,6 +14,15 @@ app.config["MONGO_DBNAME"] = 'tales_collection'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
+
+tales_collection = mongo.db.tales_collection
+tales = mongo.db.tales
+tale_name = mongo.db.tale_name
+continent_name = mongo.db.continent_name
+tale_description = mongo.db.tale_description
+author = mongo.db.author
+img_url = mongo.db.img_url
+
 """
 Sorted by continents
 
@@ -105,34 +114,35 @@ def tale(tale_name):
     tales_collection = mongo.db.tales.find().count()
     one_tale = mongo.db.tales.find_one({"_id": ObjectId(tale_name)})
     return render_template('tale.html', tales_collection=tales_collection,
-                               tales=one_tale, title=one_tale['tale_name'])
+                            tales=one_tale, title=one_tale['tale_name'])
 
 
-@app.route('/add_tale', methods=["GET", "POST"])
+@app.route('/add_tale')
 def add_tale():
-    _continents=mongo.db.continents.find()
+    form = AddTaleForm(request.form)
+    continents=mongo.db.continents.find()
     tales_collection = mongo.db.tales.find()
-    continent_list=[continent for continent in _continents]
-    return render_template("addtale.html", page_title="Your Space",  _continents=continent_list, tales=tales_collection)
+    return render_template("addtale.html", page_title="Your Space", tales_collection=tales_collection, form=form, continents=continents, tales=tales_collection)
     
 
 #add tale to database
-@app.route('/insert_tales', methods=['POST'])
+@app.route('/insert_tales', methods=['GET', 'POST'])
 def insert_tales():
-    insert_tales = {
+     if request.method == 'POST':
+          tales = mongo.db.tales
+          tales.insert_one({
             'continent_name': request.form.get('continent_name'),
             'country_name': request.form.get('country_name'),
             'tale_name': request.form.get('tale_name'),
             'author': request.form.get('author'),
             'tale_desc': request.form.get('tale_desc'),
-            'url_img': request.form.get('url_img')
-            }
-    mongo.db.tales.insert_one(insert_tales)
-    print("Tale added!")
-    return redirect(url_for('tales'))
+            'img_url': request.form.get('img_url')
+            })
+          return redirect(url_for('index'))
+
 
 # Display Edit tale Page 
-@app.route('/edit_tales/<tale_name>', methods=["GET", "POST"])
+@app.route('/edit_tales/<tale_name>')
 def edit_tales(tale_name):
     tales_collection = mongo.db.tales.find_one({"_id": ObjectId(tale_name)})
     continents =  mongo.db.continents.find()
@@ -141,39 +151,33 @@ def edit_tales(tale_name):
 
 
 #edit tale from database
-@app.route('/edit_tale/<tale_name>', methods=['GET', 'POST'])
-def edit_tale(tale_name):
+@app.route('/update_tale/<tale_name>', methods=['POST'])
+def update_tale(tale_name):
     if request.method == 'POST':
-            tales= mongo.db.tales 
-            tales.update_one({'_id': ObjectId(tale_name),
-            }, 
-                {
-                 '$set': {
+        tales_collection= mongo.db.tales
+        tales.update({'_id': ObjectId(tale_name)}, {
                      'continent_name': request.form.get('continent_name'),
                      'country_name': request.form.get('country_name'),
                      'tale_name': request.form.get('tale_name'),
                      'author': request.form.get('author'),
                      'tale_desc': request.form.get('tale_desc'),
-                     'url_img': request.form.get('url_img')
-                   }})
-    return redirect(url_for('tale', tale_name=tale_name))
-
-
-#Display Delete Page
-@app.route('/delete_tales/<tale_name>', methods=["GET", "POST"])
-def delete_tales(tale_name):
-    tales_collection = mongo.db.tales.find_one({"_id": ObjectId(tale_name)})
-    continents =  mongo.db.continents.find()
-    return render_template("deletetale.html",  page_title="Delete", tales=tales_collection, continents=continents)
-
-
-#delete tale from database
-@app.route('/delete_tale<tale_name>', methods=['GET','POST'])
-def delete_tale(tale_name):
-    if request.method== "POST":
-        tales = mongo.db.tales
-        tales.delete_one({'_id': ObjectId(tale_name)})
+                     'img_url': request.form.get('img_url')
+                   })
         return redirect(url_for('tale', tale_name=tale_name))
+
+
+
+@app.route('/delete_tale/<tale_name>')
+def delete_tale(tale_name):
+    tale = mongo.db.tales.find_one({'_id': ObjectId(tale_name)})                    
+    tales = mongo.db.tales
+    tales.delete_one({
+                '_id': ObjectId(tale_name)
+            })
+    flash("The tale has been deleted")
+    return redirect(url_for('index'))
+  
+
 
 
 if __name__ == '__main__':

@@ -17,6 +17,12 @@ height: 100vh;
     margin-right: 0;
    
 }
+/*--Navbar--*/
+.nav-wrapper {
+    background-color: #154A4E;
+    font-family:"Lucida Console";
+}
+
 
 /*--home--*/
 .home-text {
@@ -33,9 +39,7 @@ height: 100vh;
     height: auto;
    }
 
-.nav-wrapper {
-    background-color: #154A4E;
-}
+
 
 #cont-rows {
    display: flex;
